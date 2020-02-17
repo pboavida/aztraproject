@@ -2,7 +2,7 @@ import requests
 import json
 from os import getenv
 
-
+#teste
 base_url = 'https://immoscout-api-ji3l2ohvha-lz.a.run.app'
 
 summary_url = '/get_summary'
