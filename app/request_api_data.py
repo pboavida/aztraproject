@@ -45,6 +45,9 @@ while i <= total_pages:   # Iterate through all the pages to get the list os IDs
                 #print('Success!-Data')
                 json.dump(temp_data.json(), f, ensure_ascii=False, indent=4)
                 f.write('\n')
+                if 'deposit' in temp_data.json()['expose.expose']['realEstate']:
+                    print('deposit:=', temp_data.json()['expose.expose']['realEstate']['deposit'])
+
                 #ad_list.append(temp_data.json())
             else:
                 print('An error has occurred getting the data piece.')

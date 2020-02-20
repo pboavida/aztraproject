@@ -41,10 +41,13 @@ if temp_list:
 
 
 print('immoscout_id:=',temp_data.json()['expose.expose']['realEstate']['@id'])
-print('area_sq_m:=',temp_data.json()['expose.expose']['realEstate']['livingSpace'])
+if 'livingSpace' in temp_data.json()['expose.expose']['realEstate']:
+    print('area_sq_m:=', temp_data.json()['expose.expose']['realEstate']['livingSpace'])
 print('cnt_rooms:=',temp_data.json()['expose.expose']['realEstate']['numberOfRooms'])
-print('cnt_floors:=',temp_data.json()['expose.expose']['realEstate']['numberOfFloors'])
-print('floor:=',temp_data.json()['expose.expose']['realEstate']['floor'])
+if 'numberOfFloors' in temp_data.json()['expose.expose']['realEstate']:
+    print('cnt_floors:=', temp_data.json()['expose.expose']['realEstate']['numberOfFloors'])
+if 'floor' in temp_data.json()['expose.expose']['realEstate']:
+    print('floor:=', temp_data.json()['expose.expose']['realEstate']['floor'])
 print('type=',temp_data.json()['expose.expose']['realEstate']['apartmentType'])
 print('has_fitted_kitchen:=',temp_data.json()['expose.expose']['realEstate']['builtInKitchen'])
 print('has_lift:=',temp_data.json()['expose.expose']['realEstate']['lift'])
@@ -53,26 +56,40 @@ print('has_garden:=',temp_data.json()['expose.expose']['realEstate']['garden'])
 print('has_guest_toilet:=',temp_data.json()['expose.expose']['realEstate']['guestToilet'])
 print('is_barrier_free:=',temp_data.json()['expose.expose']['realEstate']['handicappedAccessible'])
 if 'heatingType' in temp_data.json()['expose.expose']['realEstate']:
-    print('heating_type:=',temp_data.json()['expose.expose']['realEstate']['heatingType'])
+    print('heating_type:=', temp_data.json()['expose.expose']['realEstate']['heatingType'])
 if 'thermalCharacteristic' in temp_data.json()['expose.expose']['realEstate']:
-    print('thermal_characteristic:=',temp_data.json()['expose.expose']['realEstate'])
-print('total_rent:=',temp_data.json()['expose.expose']['realEstate']['totalRent'])
-print('calculatedTotalRent=',temp_data.json()['expose.expose']['realEstate']['calculatedTotalRent'])
-print('base_rent:=',temp_data.json()['expose.expose']['realEstate']['baseRent'])
-print('service_charge:=',temp_data.json()['expose.expose']['realEstate']['serviceCharge'])
-print('deposit:=',temp_data.json()['expose.expose']['realEstate']['deposit'])
-print('city:=',temp_data.json()['expose.expose']['realEstate']['address']['city'])
-print('district:=',temp_data.json()['expose.expose']['realEstate']['address']['quarter'])
-print('zip_code:=',temp_data.json()['expose.expose']['realEstate']['address']['postcode'])
-print('street:=',temp_data.json()['expose.expose']['realEstate']['address']['street'])
-print('house_number:=',temp_data.json()['expose.expose']['realEstate']['address']['houseNumber'])
-print('lng:=',temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']['longitude'])
-print('lat:=',temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']['latitude'])
-print('company_name:=',temp_data.json()['expose.expose']['contactDetails']['company'])
-print('contact_firstname:=',temp_data.json()['expose.expose']['contactDetails']['firstname'])
-print('contact_lastname:=',temp_data.json()['expose.expose']['contactDetails']['lastname'])
-print('salutation:=',temp_data.json()['expose.expose']['contactDetails']['salutation'])
-print('email:=',temp_data.json()['expose.expose']['contactDetails']['email'])
+    print('thermal_characteristic:=', temp_data.json()['expose.expose']['realEstate']['thermalCharacteristic'])
+if 'totalRent' in temp_data.json()['expose.expose']['realEstate']:
+    print('total_rent:=', temp_data.json()['expose.expose']['realEstate']['totalRent'])
+print('calculatedTotalRent=', temp_data.json()['expose.expose']['realEstate']['calculatedTotalRent'])
+print('base_rent:=', temp_data.json()['expose.expose']['realEstate']['baseRent'])
+print('service_charge:=', temp_data.json()['expose.expose']['realEstate']['serviceCharge'])
+if 'deposit' in temp_data.json()['expose.expose']['realEstate']:
+    print('deposit:=', temp_data.json()['expose.expose']['realEstate']['deposit'])
+print('city:=', temp_data.json()['expose.expose']['realEstate']['address']['city'])
+print('district:=', temp_data.json()['expose.expose']['realEstate']['address']['quarter'])
+print('zip_code:=', temp_data.json()['expose.expose']['realEstate']['address']['postcode'])
+if 'street' in temp_data.json()['expose.expose']['realEstate']['address']:
+    print('street:=', temp_data.json()['expose.expose']['realEstate']['address']['street'])
+if 'houseNumber' in temp_data.json()['expose.expose']['realEstate']['address']:
+    print('house_number:=', temp_data.json()['expose.expose']['realEstate']['address']['houseNumber'])
+if 'wgs84Coordinate' in temp_data.json()['expose.expose']['realEstate']['address']:
+    if 'longitude' in temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']:
+        print('lng:=',
+              temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']['longitude'])
+    if 'latitude' in temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']:
+        print('lat:=',
+              temp_data.json()['expose.expose']['realEstate']['address']['wgs84Coordinate']['latitude'])
+if 'company' in temp_data.json()['expose.expose']['contactDetails']:
+    print('company_name:=', temp_data.json()['expose.expose']['contactDetails']['company'])
+if 'contact_firstname' in temp_data.json()['expose.expose']['contactDetails']:
+    print('contact_firstname:=', temp_data.json()['expose.expose']['contactDetails']['firstname'])
+if 'lastname' in temp_data.json()['expose.expose']['contactDetails']:
+    print('contact_lastname:=', temp_data.json()['expose.expose']['contactDetails']['lastname'])
+if 'salutation' in temp_data.json()['expose.expose']['contactDetails']:
+    print('salutation:=', temp_data.json()['expose.expose']['contactDetails']['salutation'])
+if 'email' in temp_data.json()['expose.expose']['contactDetails']['email']:
+    print('email:=',temp_data.json()['expose.expose']['contactDetails']['email'])
 
 print('phone_number:=',temp_data.json()['expose.expose']['contactDetails']['phoneNumberCountryCode'])
 print('phone_number:=',temp_data.json()['expose.expose']['contactDetails']['phoneNumberAreaCode'])
