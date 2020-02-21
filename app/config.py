@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from configparser import ConfigParser
 
-
+#the filename shouldn't be a specific link to a specific machine, but should instead refer to the project folder
 def config(filename='C:\\Users\\Pedro\PycharmProjects\\aztraproject\\app\\database.ini', section='postgresql'):
     # create a parser
     parser = ConfigParser()

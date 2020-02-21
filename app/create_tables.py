@@ -1,7 +1,31 @@
 import psycopg2
 from config import config
 
+# to be added would be checks to see if the tables are already created and confirm that we are not creating duplicates,
+# and some checks to make sure the database is there and we can open it correctly
+
+
+# the possible values for the enum variables were obtained by running the queries for a large number of ads and listing
+# all the obtained values. This is obviously not ideal and instead there should be some external confirmation about all the
+# values that can be received for those variables
+
 commands = (
+    """CREATE TYPE apartment_type AS ENUM (
+        'APARTMENT',
+        'PENTHOUSE',
+        'GROUND_FLOOR',
+        'TERRACED_FLAT',
+        'MAISONETTE',
+        'NO_INFORMATION',
+        'ROOF_STOREY',
+        'OTHER',
+        'LOFT',
+        'RAISED_GROUND_FLOOR'
+    )""",
+    """CREATE TYPE heating_type AS ENUM (
+        'CENTRAL_HEATING',
+        'SELF_CONTAINED_CENTRAL_HEATING'
+    )""",
     """CREATE TABLE dim_address(
         id uuid CONSTRAINT address_id PRIMARY KEY,
         city text NOT NULL,
@@ -35,27 +59,26 @@ commands = (
     cnt_rooms float NOT NULL,
     cnt_floors integer,
     floor integer,
-    type pg_enum,
+    type apartment_type,
     has_fitted_kitchen boolean,
     has_lift boolean,
     has_balcony boolean,
     has_garden boolean,
     has_guest_toilet boolean,
     is_barrier_free boolean,
-    heating_type pg_enum,
+    heating_type heating_type,
     thermal_characteristics float,
     total_rent float NOT NULL,
     base_rent float NOT NULL,
     service_charge float,
     deposit float
-);""")#closed commands parens
+);""")
 
 
 params = config()
 print(params['database'])
 con = psycopg2.connect(**params)
 
-# Obtain a DB Cursor
 
 cur = con.cursor()
 

@@ -2,7 +2,10 @@ import requests
 import json
 from os import getenv
 
-
+# this file was created to test if all the data needed for the tables is obtainable from the api requests
+#the data as obtained in the print statements below is not necessarily ready to be entered directly in the tables.
+# some data needs to be parsed, such as the deposit (which is obtained as a string from the api but should be entered as a number on the tables
+# or the phone numbers (or any other variables with multiple references) which should be cross-checked for consistency
 
 
 
