@@ -2,16 +2,14 @@ import requests
 import json
 from os import getenv
 
-#teste
+
 base_url = 'https://immoscout-api-ji3l2ohvha-lz.a.run.app'
 
 summary_url = '/get_summary'
 page_url = '/get_list?page='
 data_url = '/get_data?id='
 
-#test1 = base_url + summary_url
 
-#print(test1)
 
 #Get the total number of pages since we have to request the data page by page.
 get_summary = requests.get(base_url + summary_url,headers={"accept":"application/json","X-API-KEY":"dffbab93-44e9-41c2-bfff-6bab66c89b6c"})
@@ -26,7 +24,7 @@ total_pages = get_summary.json()["total_pages"]
 total_adds = get_summary.json()["total_ads"]
 
 #print(total_adds, total_pages)
-f = open("guru99.txt","w+", encoding='utf-8')
+f = open("raw_data.dat","w+", encoding='utf-8')
 i = 1
 page_info = []
 id_list = []

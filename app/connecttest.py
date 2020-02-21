@@ -23,6 +23,8 @@ def connect():
 
         # display the PostgreSQL database server version
         db_version = cur.fetchone()
+
+        
         print(db_version)
 
         # close the communication with the PostgreSQL
